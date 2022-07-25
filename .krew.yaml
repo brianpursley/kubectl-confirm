@@ -1,0 +1,43 @@
+apiVersion: krew.googlecontainertools.github.com/v1alpha2
+kind: Plugin
+metadata:
+  name: confirm
+spec:
+  version: {{ .TagName }}
+  homepage: https://github.com/brianpursley/kubectl-confirm
+  shortDescription: Show information and prompt for confirmation before running a command
+  description: |
+    Shows configuration, dry-run (if available), and diff (if available), 
+    and then prompts you to confirm by typing 'yes' before proceeding to 
+    execute the kubectl command.
+  platforms:
+    - bin: kubectl-confirm
+      {{addURIAndSha "https://github.com/brianpursley/kubectl-confirm/releases/download/{{ .TagName }}/kubectl-confirm-{{ .TagName }}-darwin-amd64.tar.gz" .TagName }}
+      selector:
+        matchLabels:
+          os: darwin
+          arch: amd64
+    - bin: kubectl-confirm
+      {{addURIAndSha "https://github.com/brianpursley/kubectl-confirm/releases/download/{{ .TagName }}/kubectl-confirm-{{ .TagName }}-darwin-arm64.tar.gz" .TagName }}
+      selector:
+        matchLabels:
+          os: darwin
+          arch: arm64
+    - bin: kubectl-confirm
+      {{addURIAndSha "https://github.com/brianpursley/kubectl-confirm/releases/download/{{ .TagName }}/kubectl-confirm-{{ .TagName }}-linux-amd64.tar.gz" .TagName }}
+      selector:
+        matchLabels:
+          os: linux
+          arch: amd64
+    - bin: kubectl-confirm
+      {{addURIAndSha "https://github.com/brianpursley/kubectl-confirm/releases/download/{{ .TagName }}/kubectl-confirm-{{ .TagName }}-linux-arm64.tar.gz" .TagName }}
+      selector:
+        matchLabels:
+          os: linux
+          arch: arm64
+    - bin: kubectl-confirm.exe
+      {{addURIAndSha "https://github.com/brianpursley/kubectl-confirm/releases/download/{{ .TagName }}/kubectl-confirm-{{ .TagName }}-windows-amd64.tar.gz" .TagName }}
+      selector:
+        matchLabels:
+          os: windows
+          arch: amd64
