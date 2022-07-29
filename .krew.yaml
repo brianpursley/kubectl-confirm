@@ -11,33 +11,33 @@ spec:
     and then prompts you to confirm by typing 'yes' before proceeding to 
     execute the kubectl command.
   platforms:
-    - bin: kubectl-confirm
+    - selector:
+        matchLabels:
+          os: darwin
+          arch: amd64
       {{addURIAndSha "https://github.com/brianpursley/kubectl-confirm/releases/download/{{ .TagName }}/kubectl-confirm-{{ .TagName }}-darwin-amd64.tar.gz" .TagName }}
-      selector:
+      bin: kubectl-confirm
+    - selector:
         matchLabels:
           os: darwin
-          arch: amd64
-    - bin: kubectl-confirm
+          arch: arm64
       {{addURIAndSha "https://github.com/brianpursley/kubectl-confirm/releases/download/{{ .TagName }}/kubectl-confirm-{{ .TagName }}-darwin-arm64.tar.gz" .TagName }}
-      selector:
-        matchLabels:
-          os: darwin
-          arch: arm64
-    - bin: kubectl-confirm
-      {{addURIAndSha "https://github.com/brianpursley/kubectl-confirm/releases/download/{{ .TagName }}/kubectl-confirm-{{ .TagName }}-linux-amd64.tar.gz" .TagName }}
-      selector:
+      bin: kubectl-confirm
+    - selector:
         matchLabels:
           os: linux
           arch: amd64
-    - bin: kubectl-confirm
-      {{addURIAndSha "https://github.com/brianpursley/kubectl-confirm/releases/download/{{ .TagName }}/kubectl-confirm-{{ .TagName }}-linux-arm64.tar.gz" .TagName }}
-      selector:
+      {{addURIAndSha "https://github.com/brianpursley/kubectl-confirm/releases/download/{{ .TagName }}/kubectl-confirm-{{ .TagName }}-linux-amd64.tar.gz" .TagName }}
+      bin: kubectl-confirm
+    - selector:
         matchLabels:
           os: linux
           arch: arm64
-    - bin: kubectl-confirm.exe
-      {{addURIAndSha "https://github.com/brianpursley/kubectl-confirm/releases/download/{{ .TagName }}/kubectl-confirm-{{ .TagName }}-windows-amd64.tar.gz" .TagName }}
-      selector:
+      {{addURIAndSha "https://github.com/brianpursley/kubectl-confirm/releases/download/{{ .TagName }}/kubectl-confirm-{{ .TagName }}-linux-arm64.tar.gz" .TagName }}
+      bin: kubectl-confirm
+    - selector:
         matchLabels:
           os: windows
           arch: amd64
+      {{addURIAndSha "https://github.com/brianpursley/kubectl-confirm/releases/download/{{ .TagName }}/kubectl-confirm-{{ .TagName }}-windows-amd64.tar.gz" .TagName }}
+      bin: kubectl-confirm.exe

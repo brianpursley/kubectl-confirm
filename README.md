@@ -5,7 +5,7 @@ Kubectl Confirm is a plugin for Kubectl that displays information and asked for 
 The following information is displayed:
 * Configuration: Context name, Cluster, User, and Namespace
 * Dry Run Output (if the executed command supports the `--dry-run` flag)
-* Diff Output (`apply` command only)
+* Diff Output (if the executed command supports the `--dry-run` and `--output` flags)
 
 ## Example Output
 ```
