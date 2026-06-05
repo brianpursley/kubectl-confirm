@@ -65,7 +65,7 @@ verify:
 	@go mod verify
 
 .PHONY: release
-release: clean darwin-amd64 darwin-arm64 linux-amd64 linux-arm64 windows-amd64 sha256
+release: clean darwin-amd64 darwin-arm64 linux-amd64 linux-arm64 windows-amd64 windows-arm64 sha256
 	@cat _output/checksum.txt
 
 .PHONY: darwin-amd64
@@ -73,45 +73,60 @@ darwin-amd64:
 	@echo "Building darwin amd64"
 	@mkdir -p _output && cd _output && \
 	GOOS=darwin GOARCH=amd64 go build $(LDFLAGS) ../cmd/kubectl-confirm.go && \
+	cp ../kubectl_complete-confirm . && \
 	cp ../LICENSE . && \
-	tar -czf kubectl-confirm-darwin-amd64.tar.gz kubectl-confirm LICENSE && \
-	rm kubectl-confirm LICENSE
+	tar -czf kubectl-confirm-darwin-amd64.tar.gz kubectl-confirm kubectl_complete-confirm LICENSE && \
+	rm kubectl-confirm kubectl_complete-confirm LICENSE
 
 .PHONY: darwin-arm64
 darwin-arm64:
 	@echo "Building darwin arm64"
 	@mkdir -p _output && cd _output && \
 	GOOS=darwin GOARCH=arm64 go build $(LDFLAGS) ../cmd/kubectl-confirm.go && \
+	cp ../kubectl_complete-confirm . && \
 	cp ../LICENSE . && \
-	tar -czf kubectl-confirm-darwin-arm64.tar.gz kubectl-confirm LICENSE && \
-	rm kubectl-confirm LICENSE
+	tar -czf kubectl-confirm-darwin-arm64.tar.gz kubectl-confirm kubectl_complete-confirm LICENSE && \
+	rm kubectl-confirm kubectl_complete-confirm LICENSE
 
 .PHONY: linux-amd64
 linux-amd64:
 	@echo "Building linux amd64"
 	@mkdir -p _output && cd _output && \
 	GOOS=linux GOARCH=amd64 go build $(LDFLAGS) ../cmd/kubectl-confirm.go && \
+	cp ../kubectl_complete-confirm . && \
 	cp ../LICENSE . && \
-	tar -czf kubectl-confirm-linux-amd64.tar.gz kubectl-confirm LICENSE && \
-	rm kubectl-confirm LICENSE
+	tar -czf kubectl-confirm-linux-amd64.tar.gz kubectl-confirm kubectl_complete-confirm LICENSE && \
+	rm kubectl-confirm kubectl_complete-confirm LICENSE
 
 .PHONY: linux-arm64
 linux-arm64:
 	@echo "Building linux arm64"
 	@mkdir -p _output && cd _output && \
 	GOOS=linux GOARCH=arm64 go build $(LDFLAGS) ../cmd/kubectl-confirm.go && \
+	cp ../kubectl_complete-confirm . && \
 	cp ../LICENSE . && \
-	tar -czf kubectl-confirm-linux-arm64.tar.gz kubectl-confirm LICENSE && \
-	rm kubectl-confirm LICENSE
+	tar -czf kubectl-confirm-linux-arm64.tar.gz kubectl-confirm kubectl_complete-confirm LICENSE && \
+	rm kubectl-confirm kubectl_complete-confirm LICENSE
 
 .PHONY: windows-amd64
 windows-amd64:
 	@echo "Building windows amd64"
 	@mkdir -p _output && cd _output && \
 	GOOS=windows GOARCH=amd64 go build $(LDFLAGS) ../cmd/kubectl-confirm.go && \
+	cp ../kubectl_complete-confirm . && \
 	cp ../LICENSE . && \
-	tar -czf kubectl-confirm-windows-amd64.tar.gz kubectl-confirm.exe LICENSE && \
-	rm kubectl-confirm.exe LICENSE
+	tar -czf kubectl-confirm-windows-amd64.tar.gz kubectl-confirm.exe kubectl_complete-confirm LICENSE && \
+	rm kubectl-confirm.exe kubectl_complete-confirm LICENSE
+
+.PHONY: windows-arm64
+windows-arm64:
+	@echo "Building windows arm64"
+	@mkdir -p _output && cd _output && \
+	GOOS=windows GOARCH=arm64 go build $(LDFLAGS) ../cmd/kubectl-confirm.go && \
+	cp ../kubectl_complete-confirm . && \
+	cp ../LICENSE . && \
+	tar -czf kubectl-confirm-windows-arm64.tar.gz kubectl-confirm.exe kubectl_complete-confirm LICENSE && \
+	rm kubectl-confirm.exe kubectl_complete-confirm LICENSE
 
 sha256:
 	@echo "Generating checksum.txt"

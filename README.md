@@ -62,8 +62,3 @@ Enter 'yes' to continue: no
 
 Command aborted.
 ```
-
-## Known Limitations
-
-* Command line completion does not work
-
