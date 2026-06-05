@@ -113,18 +113,20 @@ windows-amd64:
 	@echo "Building windows amd64"
 	@mkdir -p _output && cd _output && \
 	GOOS=windows GOARCH=amd64 go build $(LDFLAGS) ../cmd/kubectl-confirm.go && \
+	cp ../kubectl_complete-confirm.bat . && \
 	cp ../LICENSE . && \
-	tar -czf kubectl-confirm-windows-amd64.tar.gz kubectl-confirm.exe LICENSE && \
-	rm kubectl-confirm.exe LICENSE
+	tar -czf kubectl-confirm-windows-amd64.tar.gz kubectl-confirm.exe kubectl_complete-confirm.bat LICENSE && \
+	rm kubectl-confirm.exe kubectl_complete-confirm.bat LICENSE
 
 .PHONY: windows-arm64
 windows-arm64:
 	@echo "Building windows arm64"
 	@mkdir -p _output && cd _output && \
 	GOOS=windows GOARCH=arm64 go build $(LDFLAGS) ../cmd/kubectl-confirm.go && \
+	cp ../kubectl_complete-confirm.bat . && \
 	cp ../LICENSE . && \
-	tar -czf kubectl-confirm-windows-arm64.tar.gz kubectl-confirm.exe LICENSE && \
-	rm kubectl-confirm.exe LICENSE
+	tar -czf kubectl-confirm-windows-arm64.tar.gz kubectl-confirm.exe kubectl_complete-confirm.bat LICENSE && \
+	rm kubectl-confirm.exe kubectl_complete-confirm.bat LICENSE
 
 sha256:
 	@echo "Generating checksum.txt"
