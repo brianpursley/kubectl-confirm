@@ -63,7 +63,8 @@ Enter 'yes' to continue: no
 Command aborted.
 ```
 
-## Known Limitations
+## Shell Completion
 
-* Command line completion does not work
+`kubectl confirm` supports kubectl plugin completion with kubectl v1.26 or newer when the `kubectl_complete-confirm` executable is available on your `PATH`.
 
+Krew does not create a link for the `kubectl_complete-confirm` executable, so you will need to manually link or copy it to a location in your `PATH` after installing the plugin.

@@ -19,8 +19,9 @@ package cmd
 import (
 	"bytes"
 	"fmt"
-	"github.com/spf13/cobra"
 	"os"
+
+	"github.com/spf13/cobra"
 
 	"github.com/brianpursley/kubectl-confirm/internal/util"
 )

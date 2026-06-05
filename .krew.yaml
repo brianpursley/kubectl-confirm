@@ -41,3 +41,9 @@ spec:
           arch: amd64
       {{addURIAndSha "https://github.com/brianpursley/kubectl-confirm/releases/download/{{ .TagName }}/kubectl-confirm-{{ .TagName }}-windows-amd64.tar.gz" .TagName }}
       bin: kubectl-confirm.exe
+    - selector:
+        matchLabels:
+          os: windows
+          arch: arm64
+      {{addURIAndSha "https://github.com/brianpursley/kubectl-confirm/releases/download/{{ .TagName }}/kubectl-confirm-{{ .TagName }}-windows-arm64.tar.gz" .TagName }}
+      bin: kubectl-confirm.exe
